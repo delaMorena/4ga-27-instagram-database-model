@@ -35,15 +35,15 @@ class Post_comment(Base):
     id = Column(Integer, primary_key=True)
     author_id = Column(Integer, ForeignKey('user.id'))
     post_id = Column(Integer, ForeignKey('post.id'))
-    post_comment = relationship(Post, User)
+    # post_comment = relationship(Post, User)
     # published_at = Column(timestamp)
     
 class Comment_likes(Base):
     __tablename__ = 'comment_likes'
     id = Column(Integer, primary_key=True)
     author_id = Column(Integer, ForeignKey('user.id'))
-    post_comment_id = Column(Integer, ForeignKey('post.id'))
-    Comment_likes = relationship(Post, User) 
+    post_comment_id = Column(Integer, ForeignKey('post_comment.id'))
+    Comment_likes = relationship(Post_comment, User) 
 
     # published_at = Column(timestamp)
 
